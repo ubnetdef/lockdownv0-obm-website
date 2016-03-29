@@ -64,7 +64,8 @@ include '../includes/header.php';
     			}
     		}
 
-    		printDir('..');
+    		// Default: parent directory
+    		printDir(isset($_GET['dir']) ? $_GET['dir'] : '..');
     	?>
     	</ul>
     	</div>
