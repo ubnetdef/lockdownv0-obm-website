@@ -1,6 +1,4 @@
 <?php
-require './includes/admin_nav.php';
-
 $title = 'Office of Blue Team Management';
 $curnav = 'Login Page';
 $worked = true;
@@ -33,6 +31,10 @@ include './includes/header.php';
     <div class="alert alert-danger">Username / Password is incorrect. Did you forget your password again? <?php echo $help; ?></div>
     <?php endif; ?>
 
+    <?php if ( isset($_GET['registered']) && $_GET['registered'] ): ?>
+    <div class="alert alert-success">Registration successful! Please login below.</div>
+    <?php endif; ?>
+
     <form class="form-horizontal">
     	<div class="form-group">
     		<label for="username" class="col-sm-2 control-label">Username</label>
@@ -51,7 +53,7 @@ include './includes/header.php';
     	<div class="form-group">
 	    	<div class="col-sm-offset-2 col-sm-10">
 	    		<button type="submit" class="btn btn-default">Sign in</button>
-	    		<a href="/admin/register.php" class="btn btn-default">Register</a>
+	    		<a href="/register.php" class="btn btn-default">Register</a>
 	    	</div>
     	</div>
     </form>

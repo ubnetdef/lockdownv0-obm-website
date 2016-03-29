@@ -17,5 +17,11 @@ A user can escalate their privileges by sending a POST request to `/panel/edit.p
 ### Unauthoried User View/Edit
 A user can edit any user, as long as they have an ID. They have the change the hidden form field "`uid`" on the `/panel/edit.php` page to the UID they wish to view/edit.
 
+### Unchecked User Creation
+A user can create a new account with admin privileges by adding a field "`admin`" and setting that to 1 on the user creation page.
+
+### Duplication of Usernames Allowed
+Currently a user may use the username of another already registered user.
+
 ### Stored XSS
-A user can update their username (by sending a POST request to `/panel/edit.php`, with field "`username=<script>alert('xss');</script>`"), and gain a stored XSS.  This can affect admin users that visit the Personnel Management page (`/admin/people.php`).
+A user can update their username (by sending a POST request to `/panel/edit.php`, with field "`username=<script>alert('xss');</script>`"), and gain a stored XSS.  This can affect admin users that visit the Personnel Management page (`/admin/people.php`).  This can also be done from the user creation page.
