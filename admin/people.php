@@ -13,7 +13,7 @@ requireAdmin();
 include '../includes/header.php';
 ?>
 
-<section id="security" class="container">
+<section id="people" class="container">
     <div class="center">
         <h2>Personnel Management</h2>
         <p>Welcome <?php echo $curusername; ?>!</p>
@@ -33,7 +33,7 @@ include '../includes/header.php';
 
     	<tbody>
     	<?php
-    		$stmt = $db->prepare('SELECT * FROM users');
+    		$stmt = $db->prepare('SELECT * FROM users WHERE password != "disabled"');
     		$stmt->execute();
 
     		while ($row = $stmt->fetch(PDO::FETCH_ASSOC, PDO::FETCH_ORI_NEXT)) {

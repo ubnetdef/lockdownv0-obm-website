@@ -36,7 +36,7 @@ if ( isset($_POST['contents']) && isset($_POST['filename']) ) {
 include '../includes/header.php';
 ?>
 
-<section id="security" class="container">
+<section id="editor" class="container">
 	<?php echo $message; ?>
 
     <div class="center">

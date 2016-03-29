@@ -23,7 +23,7 @@ if ( isset($_GET['username']) && isset($_GET['password']) ) {
 include '../includes/header.php';
 ?>
 
-<section id="security" class="container">
+<section id="login" class="container">
     <div class="center">
         <h2>Secure OBM Login System</h2>
         <p>Please enter your username and password.</p>
