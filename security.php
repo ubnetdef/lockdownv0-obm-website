@@ -2,7 +2,8 @@
 $title = 'Security | Office of Blue Team Management';
 $curnav = 'Security';
 
-include 'includes/header.php';
+include './includes/session.php';
+include './includes/header.php';
 ?>
 
 <section id="security" class="container">
@@ -31,4 +32,4 @@ include 'includes/header.php';
     </div>
 </section>
 
-<?php include 'includes/footer.php'; ?>
+<?php include './includes/footer.php'; ?>

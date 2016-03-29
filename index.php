@@ -2,7 +2,8 @@
 $title = 'Office of Blue Team Management';
 $curnav = 'Home';
 
-include 'includes/header.php';
+include './includes/session.php';
+include './includes/header.php';
 ?>
 <section id="main-slider" class="no-margin">
     <div class="carousel slide wet-asphalt">
@@ -55,4 +56,4 @@ include 'includes/header.php';
         </div>
     </div>
 </section>
-<?php include 'includes/footer.php'; ?>
+<?php include './includes/footer.php'; ?>

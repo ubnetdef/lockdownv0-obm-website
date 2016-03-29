@@ -2,7 +2,8 @@
 $title = 'About | Office of Blue Team Management';
 $curnav = 'About Us';
 
-include 'includes/header.php';
+include './includes/session.php';
+include './includes/header.php';
 ?>
 
 <section id="title" class="emerald">
@@ -96,4 +97,4 @@ include 'includes/header.php';
         </div><!--/#meet-the-team-->
     </section><!--/#about-us-->
 
-<?php include 'includes/footer.php'; ?>
+<?php include './includes/footer.php'; ?>

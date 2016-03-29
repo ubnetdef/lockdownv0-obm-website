@@ -1,12 +1,12 @@
 <?php
-require '../includes/admin_nav.php';
+require './includes/admin_nav.php';
 
 $title = 'Office of Blue Team Management';
 $curnav = 'Login Page';
 $worked = true;
 $help = '';
 
-include '../includes/session.php';
+include './includes/session.php';
 
 if ( isset($_GET['username']) && isset($_GET['password']) ) {
 	$username = $_GET['username'];
@@ -15,12 +15,12 @@ if ( isset($_GET['username']) && isset($_GET['password']) ) {
 	$worked = tryLogin($username, $securepass, $help);
 
 	if ( $worked ) {
-		header('Location: /admin');
+		header('Location: /'.($curisadmin ? 'admin' : 'panel'));
 		die;
 	}
 }
 
-include '../includes/header.php';
+include './includes/header.php';
 ?>
 
 <section id="login" class="container">
@@ -57,4 +57,4 @@ include '../includes/header.php';
     </form>
 </section>
 
-<?php include '../includes/footer.php'; ?>
+<?php include './includes/footer.php'; ?>

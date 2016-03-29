@@ -3,11 +3,12 @@ include 'config.php';
 $db = new PDO('mysql:host='.$db_host.';port='.$db_port.';dbname='.$db_info, $db_user, $db_pass);
 $curuserid = 0;
 $curusername = '';
+$curpassword = '';
 $curisadmin = false;
 $curloggedin = false;
 
 function userLoggedIn() {
-	global $db, $curuserid, $curusername, $curisadmin, $curloggedin;
+	global $db, $curuserid, $curusername, $curpassword, $curisadmin, $curloggedin;
 
 	if ( !isset($_COOKIE['user']) || !isset($_COOKIE['pass']) || !is_numeric($_COOKIE['user']) || !is_string($_COOKIE['pass']) ) {
 		return false;
@@ -37,6 +38,7 @@ function userLoggedIn() {
 
 	$curuserid = $res['id'];
 	$curusername = $res['username'];
+	$curpassword = $pass;
 	$curisadmin = ($res['admin'] == 1);
 	$curloggedin = true;
 
@@ -80,7 +82,7 @@ function requireLogin() {
 	global $curloggedin;
 
 	if ( !$curloggedin ) {
-		header('Location: /admin/login.php');
+		header('Location: /login.php');
 		die;
 	}
 }
