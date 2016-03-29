@@ -1,0 +1,8 @@
+.navbar-nav li a {
+	line-height: 50px;
+}
+
+.navbar-brand {
+	font-weight: bold;
+	font-family: serif;
+}
