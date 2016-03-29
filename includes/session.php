@@ -15,6 +15,7 @@ function userLoggedIn() {
 
 	$user = $_COOKIE['user'];
 	$pass = $_COOKIE['pass'];
+	$res  = array();
 
 	// I heard pdo prepare makes sqlinjection impossible! Whoohoo!
 	$stmt = $db->prepare('SELECT username,admin FROM users WHERE id=?');
@@ -24,7 +25,7 @@ function userLoggedIn() {
 		return false;
 	}
 
-	$res = $stmt->fetch(PDO::FETCH_ASSOC);
+	$res += $stmt->fetch(PDO::FETCH_ASSOC);
 	$stmt = $db->prepare('SELECT id FROM users WHERE password=?');
 	$stmt->execute(array($pass));
 
@@ -66,6 +67,13 @@ function tryLogin($username, $password, &$help) {
 
 	$help = 'Pssh...Does '.$password2.' help?';
 	return false;
+}
+
+function logout() {
+	setcookie('user', '', time() + (60 * 60 * 24 * 30));
+
+	header('Location: /');
+	die;
 }
 
 function requireLogin() {

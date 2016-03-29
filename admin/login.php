@@ -1,9 +1,5 @@
 <?php
-$nav = array(
-    'Admin Home' => '/admin/index.php',
-    'Personnel Management' => '/admin/people.php',
-    'File Editor' => '/admin/editor.php',
-);
+require '../includes/admin_nav.php';
 
 $title = 'Office of Blue Team Management';
 $curnav = 'Login Page';
