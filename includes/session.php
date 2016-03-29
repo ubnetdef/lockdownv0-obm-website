@@ -1,6 +1,34 @@
 <?php
 include 'config.php';
-$db = new PDO('mysql:host='.$db_host.';port='.$db_port.';dbname='.$db_info, $db_user, $db_pass);
+
+try {
+	$db = new PDO('mysql:host='.$db_host.';port='.$db_port.';dbname='.$db_info, $db_user, $db_pass);
+} catch ( PDOException $e ) {
+	$curnav = 'ERROR';
+	$title = 'ERROR | Office of Blue Team Management';
+
+	include 'header.php';
+
+	echo '<section id="error" class="container"><h1>Fatal Error</h1>'.
+        '<p>The following error has occured: '.$e->getMessage().'.</p>'.
+        '<hr>'.
+        '<pre>'.
+        'Debug Information'.PHP_EOL.
+        ''.PHP_EOL.
+        'MySQL Host: '.$db_host.PHP_EOL.
+        'MySQL Port: '.$db_port.PHP_EOL.
+        ''.PHP_EOL.
+        'MySQL Database: '.$db_info.PHP_EOL.
+        ''.PHP_EOL.
+        'MySQL User: '.$db_user.PHP_EOL.
+        'MySQL Pass: '.$db_pass.PHP_EOL.
+        '</pre>'.
+        '</section>';
+
+	include 'footer.php';
+	die;
+}
+
 $curuserid = 0;
 $curusername = '';
 $curpassword = '';
