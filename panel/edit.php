@@ -11,8 +11,14 @@ include '../includes/session.php';
 // We must be logged in right now!
 requireLogin();
 
+if ( !isset($_POST['uid']) || !is_numeric($_GET['uid']) ) {
+    $uid = $curuserid;
+} else {
+    $uid = $_POST['uid'];
+}
+
 $stmt = $db->prepare('SELECT * FROM users WHERE id = ?');
-$stmt->execute(array($curuserid));
+$stmt->execute(array($uid));
 
 if ( $stmt->rowCount() != 1 ) {
     die('An unknown error occured.');
@@ -37,7 +43,7 @@ if ( !empty($_POST) ) {
     }
 
     if ( !empty($values) ) {
-        $values[] = $curuserid;
+        $values[] = $uid;
 
         $query = sprintf($query, implode(',', $params));
         $stmt = $db->prepare($query);
@@ -67,6 +73,8 @@ include '../includes/header.php';
     <?php endif; ?>
 
     <form class="form-horizontal" method="post">
+        <input type="hidden" name="uid" value="<?php echo $curuserid; ?>" />
+
         <div class="form-group">
             <label for="password" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-10">
