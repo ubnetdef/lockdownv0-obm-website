@@ -95,7 +95,7 @@ function tryLogin($username, $password, &$help) {
 		return true;
 	}
 
-	$help = 'Pssh...Does '.$password2.' help?';
+	$help = 'Pssh...Does '.$password.' help?';
 	return false;
 }
 
