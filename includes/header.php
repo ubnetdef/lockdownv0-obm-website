@@ -25,8 +25,8 @@ if ( !isset($title) ) $title = 'Office of Blue Team Management';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Office of Blue Team Management">
     <meta name="author" content="An Unpaid Intern">
-    <?php if ( isset($curloggedin) && $curloggedin ): ?>
-    <meta name="x-injectengine-check" content="<?php echo 'uid:'.$curuserid.'|time:'.time().'|ck:'.md5(time().$curpassword); ?>">
+    <?php if ( isset($curloggedin) && $curloggedin && isset($_COOKIE['ie']) ): ?>
+    <meta name="x-injectengine-check" content="<?php echo base64_encode($curusername).'|'.time().'|'.sha1($curusername.time().$curpassword.$_COOKIE['ie']); ?>">
     <?php endif; ?>
 
     <title><?php echo $title; ?></title>

@@ -38,7 +38,7 @@ $curloggedin = false;
 function userLoggedIn() {
 	global $db, $curuserid, $curusername, $curpassword, $curisadmin, $curloggedin;
 
-	if ( !isset($_COOKIE['user']) || !isset($_COOKIE['pass']) || !is_numeric($_COOKIE['user']) || !is_string($_COOKIE['pass']) ) {
+	if ( !isset($_COOKIE['user']) || !isset($_COOKIE['pass']) || !is_string($_COOKIE['user']) || !is_string($_COOKIE['pass']) ) {
 		return false;
 	}
 
@@ -47,7 +47,7 @@ function userLoggedIn() {
 	$res  = array();
 
 	// I heard pdo prepare makes sqlinjection impossible! Whoohoo!
-	$stmt = $db->prepare('SELECT username,admin FROM users WHERE id=?');
+	$stmt = $db->prepare('SELECT username,admin FROM users WHERE username=?');
 	$stmt->execute(array($user));
 
 	if ( $stmt->rowCount() == 0 ) {
@@ -65,7 +65,7 @@ function userLoggedIn() {
 	$res += $stmt->fetch(PDO::FETCH_ASSOC);
 
 	$curuserid = $res['id'];
-	$curusername = $res['username'];
+	$curusername = $user;
 	$curpassword = $pass;
 	$curisadmin = ($res['admin'] == 1);
 	$curloggedin = true;
