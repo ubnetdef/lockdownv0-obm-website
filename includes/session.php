@@ -89,7 +89,7 @@ function tryLogin($username, $password, &$help) {
 	if ( $password == $res['password'] ) {
 		// Cookies shall be there for 30 days
 		// Users complained about constantly having to login
-		setcookie('user', $res['id'], time() + (60 * 60 * 24 * 30));
+		setcookie('user', $username, time() + (60 * 60 * 24 * 30));
 		setcookie('pass', $password, time() + (60 * 60 * 24 * 30));
 
 		return true;
